@@ -1,0 +1,26 @@
+<div class="card">
+  <h5 class="card-header">Customers List</h5>
+  <div class="card-body">
+    <div class="card-title">
+      <!--<button (click)="addNew()" class="btn btn-primary fas fa-coffee fa-sm">-->
+      <button (click)="addNew()" class="btn btn-primary">
+        <i class="fas fa-user-plus"></i>
+        <span translate>Add New</span>
+      </button>
+    </div>
+    <table class="table table-responsive table-bordered table-striped">
+      <thead class="table-primary">
+        <tr>
+          <th translate>First Name</th>
+          <th translate>Last Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of Customers$ | async">
+          <td>{{ item.FName }}</td>
+          <td>{{ item.LName }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

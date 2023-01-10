@@ -1,0 +1,6 @@
+<div>{{ node.name }}</div>
+<ul>
+  <li *ngFor="let node of node.children">
+    <app-tree-nested [node]="node"></app-tree-nested>
+  </li>
+</ul>

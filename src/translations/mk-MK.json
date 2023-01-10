@@ -1,0 +1,22 @@
+{
+  "APP_NAME": "Апп1",
+  "About": "За",
+  "Hello world !": "Здраво свете !",
+  "Home": "Дома",
+  "Logged in as": "Најавен како",
+  "Login": "Најава",
+  "Logout": "Одјава",
+  "Password": "Лозинка",
+  "Password is required": "Лозинката е задолжителна",
+  "Username": "Корисничко име",
+  "Username is required": "Корисничкото име е задолжително",
+  "Username or password incorrect.": "Корисничкото име или лозинката се погрешни.",
+  "Remember me": "Запамти ме",
+  "Version": "Верзија",
+  "First Name": "Име",
+  "Last Name": "Презиме",
+  "Save": "Сними",
+  "Cancel": "Откажи",
+  "Add New": "Додади",
+  "Unexpected Error": "Непредвидена Грешка"
+}
