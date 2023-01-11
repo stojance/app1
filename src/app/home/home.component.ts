@@ -11,6 +11,10 @@ import { QuoteService } from './quote.service';
 export class HomeComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
+  brojka = 1234567890;
+  firstName: string = 'Sukesh';
+  middleName: string = 'Nagesh';
+  lastName: string = 'Marla';
 
   constructor(private quoteService: QuoteService) {}
 

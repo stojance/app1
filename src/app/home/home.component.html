@@ -7,5 +7,9 @@
     <app-loader [isLoading]="isLoading"></app-loader>
     <q [hidden]="isLoading">{{ quote }}</q>
     <button class="btn btn-danger" (click)="errorClick()">Errors</button>
+    <p>{{ brojka | fileSize }}</p>
+    <p style="background: pink" mouse-over-color="lightyellow">
+      Full name :{{ firstName | concat : middleName : lastName }}
+    </p>
   </div>
 </div>
