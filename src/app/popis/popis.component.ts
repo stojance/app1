@@ -5,6 +5,13 @@ import { Observable, Subscription } from 'rxjs';
 import { OS_Sredstva, V_Popisani } from '@app/models/HttpResponses/popis.responses';
 import { SharedModule } from '@app/@shared';
 
+export enum TableToShow {
+  None = 'None',
+  Sredstva = 'Sredstva',
+  Popisani = 'Popisani',
+  NePopisani = 'NePopisani',
+}
+
 @Component({
   selector: 'app-popis',
   standalone: true,
@@ -23,8 +30,7 @@ export class PopisComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = {};
   dtOptionsPopisani: DataTables.Settings = {};
 
-  showTable: boolean = false;
-  showTablePopisani: boolean = false;
+  tableToShow: TableToShow = TableToShow.None;
 
   constructor(private popisService: PopisService) {
     this.isLoading$ = this.popisService.isLoading$;
@@ -75,13 +81,12 @@ export class PopisComponent implements OnInit, OnDestroy {
     };
     this.sredstvaSubscription = this.sredstva$.subscribe((data) => {
       this.dtOptions = Object.assign(this.dtOptions, { data });
-      this.showTable = data.length > 0;
-      this.showTablePopisani = false;
+      this.tableToShow = data.length > 0 ? TableToShow.Sredstva : TableToShow.None;
     });
     this.popisaniSubscription = this.popisani$.subscribe((data) => {
       this.dtOptionsPopisani = Object.assign(this.dtOptionsPopisani, { data });
-      this.showTablePopisani = data.length > 0;
-      this.showTable = false;
+
+      this.tableToShow = data.length > 0 ? TableToShow.Popisani : TableToShow.None;
     });
   }
 

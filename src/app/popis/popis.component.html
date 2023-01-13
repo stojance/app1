@@ -2,7 +2,7 @@
 <app-loader [isLoading]="true" *ngIf="isLoading$ | async" ngClass="text-center"></app-loader>
 <button
   class="btn"
-  [ngClass]="showTable ? 'btn-primary' : 'btn-secondary'"
+  [ngClass]="tableToShow === 'Sredstva' ? 'btn-primary' : 'btn-secondary'"
   (click)="loadSredstva()"
   [disabled]="isLoading$ | async"
 >
@@ -10,7 +10,7 @@
 </button>
 <button
   class="btn"
-  [ngClass]="showTablePopisani ? 'btn-primary' : 'btn-secondary'"
+  [ngClass]="tableToShow === 'Popisani' ? 'btn-primary' : 'btn-secondary'"
   (click)="loadPopisani()"
   [disabled]="isLoading$ | async"
 >
@@ -21,7 +21,7 @@
     datatable
     [dtOptions]="dtOptions"
     class="table table-responsive table-bordered table-striped hover"
-    *ngIf="showTable"
+    *ngIf="tableToShow === 'Sredstva'"
   >
     <thead class="table-primary"></thead>
   </table>
@@ -29,8 +29,9 @@
     datatable
     [dtOptions]="dtOptionsPopisani"
     class="table table-responsive table-bordered table-striped hover"
-    *ngIf="showTablePopisani"
+    *ngIf="tableToShow === 'Popisani'"
   >
     <thead class="table-primary"></thead>
   </table>
 </div>
+{{ tableToShow }}
