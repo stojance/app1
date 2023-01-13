@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AppConfigService {
   apiUrl: string;
+  popisTablesUrl: string;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -15,6 +16,7 @@ export class AppConfigService {
       .toPromise()
       .then((data: any) => {
         this.apiUrl = data.apiUrl;
+        this.popisTablesUrl = data.popisTablesUrl;
       });
   }
 }
