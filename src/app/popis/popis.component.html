@@ -1,0 +1,9 @@
+<h2 class="text-center">Popis</h2>
+<app-loader [isLoading]="true" *ngIf="isLoading$ | async" ngClass="text-center"></app-loader>
+<button class="btn btn-primary" (click)="loadSredstva()" [disabled]="isLoading$ | async">Sredstva</button>
+<div *ngIf="(isLoading$ | async) === false">
+  {{ (sredstva$ | async)?.length }}
+  <table datatable [dtOptions]="dtOptions" class="table table-responsive table-bordered table-striped hover">
+    <thead class="table-primary"></thead>
+  </table>
+</div>
