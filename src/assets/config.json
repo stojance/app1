@@ -1,4 +1,4 @@
 {
   "apiUrl": "http://localhost:4000",
-  "popisTablesUrl": "http://192.168.222.73/popis-stb/api/popis/table"
+  "popisApiUrl": "http://192.168.222.73/popis-stb/api/popis"
 }

@@ -43,7 +43,7 @@ export class AuthenticationService {
           this._isAuthenticationFailedSubject.next(true);
         }
         if (data.token) {
-          this.credentialsService.setCredentials(data);
+          this.credentialsService.setCredentials(data, context.remember || true);
           this.router.navigate([this.route.snapshot.queryParams['redirect'] || 'customer'], { replaceUrl: true });
         }
       },

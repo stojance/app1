@@ -1,21 +1,32 @@
-<h2 class="text-center">Popis</h2>
+<h2 class="text-center">Попис</h2>
+<div>
+  <button
+    class="btn"
+    [ngClass]="tableToShow === 'Sredstva' ? 'btn-primary' : 'btn-secondary'"
+    (click)="loadSredstva()"
+    [disabled]="isLoading$ | async"
+  >
+    Сите Средства {{ (sredstva$ | async)?.length === 0 ? '' : (sredstva$ | async)?.length }}
+  </button>
+  <button
+    class="btn"
+    [ngClass]="tableToShow === 'Popisani' ? 'btn-primary' : 'btn-secondary'"
+    (click)="loadPopisani()"
+    [disabled]="isLoading$ | async"
+  >
+    Само попишани {{ (popisani$ | async)?.length === 0 ? '' : (popisani$ | async)?.length }}
+  </button>
+  <button
+    class="btn"
+    [ngClass]="tableToShow === 'NePopisani' ? 'btn-primary' : 'btn-secondary'"
+    (click)="loadNePopisani()"
+    [disabled]="isLoading$ | async"
+  >
+    Непопишани {{ (nePopisani$ | async)?.length === 0 ? '' : (nePopisani$ | async)?.length }}
+  </button>
+</div>
+<hr />
 <app-loader [isLoading]="true" *ngIf="isLoading$ | async" ngClass="text-center"></app-loader>
-<button
-  class="btn"
-  [ngClass]="tableToShow === 'Sredstva' ? 'btn-primary' : 'btn-secondary'"
-  (click)="loadSredstva()"
-  [disabled]="isLoading$ | async"
->
-  Sredstva {{ (sredstva$ | async)?.length }}
-</button>
-<button
-  class="btn"
-  [ngClass]="tableToShow === 'Popisani' ? 'btn-primary' : 'btn-secondary'"
-  (click)="loadPopisani()"
-  [disabled]="isLoading$ | async"
->
-  Popisani {{ (popisani$ | async)?.length }}
-</button>
 <div *ngIf="(isLoading$ | async) === false">
   <table
     datatable
@@ -25,6 +36,9 @@
   >
     <thead class="table-primary"></thead>
   </table>
+  <a class="btn btn-primary" [href]="sredstvaExportUrl" target="_blank" *ngIf="tableToShow === 'Sredstva'"
+    >Export to Excel</a
+  >
   <table
     datatable
     [dtOptions]="dtOptionsPopisani"
@@ -33,5 +47,18 @@
   >
     <thead class="table-primary"></thead>
   </table>
+  <a class="btn btn-primary" [href]="popisaniExportUrl" target="_blank" *ngIf="tableToShow === 'Popisani'"
+    >Export to Excel</a
+  >
+  <table
+    datatable
+    [dtOptions]="dtOptionsNePopisani"
+    class="table table-responsive table-bordered table-striped hover"
+    *ngIf="tableToShow === 'NePopisani'"
+  >
+    <thead class="table-primary"></thead>
+  </table>
+  <a class="btn btn-primary" [href]="nePopisaniExportUrl" target="_blank" *ngIf="tableToShow === 'NePopisani'"
+    >Export to Excel</a
+  >
 </div>
-{{ tableToShow }}
