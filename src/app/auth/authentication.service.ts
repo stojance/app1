@@ -33,7 +33,7 @@ export class AuthenticationService {
     this.isAuthenticationFailedObserver$ = this._isAuthenticationFailedSubject.asObservable();
   }
 
-  login(context: LoginContext): void {
+  login_(context: LoginContext): void {
     this.credentialsService.setCredentials();
     const url = `${this.appConfigService.apiUrl}/signin`; //'http://localhost:4000/signin';
     this.httpClient.post(url, context).subscribe(
@@ -45,6 +45,27 @@ export class AuthenticationService {
         if (data.token) {
           this.credentialsService.setCredentials(data, context.remember || true);
           this.router.navigate([this.route.snapshot.queryParams['redirect'] || 'customer'], { replaceUrl: true });
+        }
+      },
+      (error) => {
+        //this.error = error;
+        this._isAuthenticationFailedSubject.next(true);
+      }
+    );
+  }
+  login(context: LoginContext): void {
+    this.credentialsService.setCredentials();
+    const url = `${this.appConfigService.config.popisApiLogin}`;
+    this.httpClient.post(url, context).subscribe(
+      (data: any) => {
+        console.log(data);
+        if (data.error) {
+          //this.error = data.error;
+          this._isAuthenticationFailedSubject.next(true);
+        }
+        if (data.token) {
+          this.credentialsService.setCredentials(data, context.remember || true);
+          this.router.navigate([this.route.snapshot.queryParams['redirect'] || 'popis'], { replaceUrl: true });
         }
       },
       (error) => {

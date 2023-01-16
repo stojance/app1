@@ -1,4 +1,5 @@
 {
   "apiUrl": "http://localhost:4000",
-  "popisApiUrl": "http://192.168.222.73/popis-stb/api/popis"
+  "popisApiUrl": "http://192.168.222.73/popis-stb/api/popis",
+  "popisApiLogin": "http://192.168.222.73/popis-stb/api/users/authenticate"
 }

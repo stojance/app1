@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class AppConfigService {
   apiUrl: string;
   popisApiUrl: string;
-
+  config: any;
   constructor(private httpClient: HttpClient) {}
 
   loadConfig(): Promise<void> {
@@ -17,6 +17,7 @@ export class AppConfigService {
       .then((data: any) => {
         this.apiUrl = data.apiUrl;
         this.popisApiUrl = data.popisApiUrl;
+        this.config = data;
       });
   }
 }
