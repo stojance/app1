@@ -52,11 +52,11 @@ export class PopisComponent implements OnInit, OnDestroy {
           data: 'OS_ID',
         },
         {
-          title: 'Inventaren broj',
+          title: 'Инвентарен бр.',
           data: 'InventarenBroj',
         },
         {
-          title: 'Naziv',
+          title: 'Назив',
           data: 'Naziv',
         },
       ],
@@ -66,7 +66,7 @@ export class PopisComponent implements OnInit, OnDestroy {
       pagingType: 'full_numbers',
       columns: [
         {
-          title: 'Ured broj',
+          title: 'Уред бр.',
           data: 'UredBroj',
         },
         {
@@ -74,12 +74,20 @@ export class PopisComponent implements OnInit, OnDestroy {
           data: 'OS_ID',
         },
         {
-          title: 'Inventaren broj',
+          title: 'Инвентарен бр.',
           data: 'InventarenBroj',
         },
         {
-          title: 'Naziv',
+          title: 'Назив',
           data: 'Naziv',
+        },
+        {
+          title: 'Има промени',
+          data: 'ImaPromena',
+        },
+        {
+          title: 'Промени',
+          data: 'Promeni',
         },
       ],
       data: [],
@@ -92,11 +100,11 @@ export class PopisComponent implements OnInit, OnDestroy {
           data: 'OS_ID',
         },
         {
-          title: 'Inventaren broj',
+          title: 'Инвентарен бр.',
           data: 'InventarenBroj',
         },
         {
-          title: 'Naziv',
+          title: 'Назив',
           data: 'Naziv',
         },
       ],
