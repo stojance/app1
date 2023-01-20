@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export class User {
   id: number;
   firstName: string;
@@ -108,6 +109,26 @@ export class V_Popisani {
   KorisnikNaziv: string;
 }
 
+export class V_PopisaniNovoNajdeni {
+  Rb: number;
+  UredBroj: number;
+  OS_ID: number;
+  Zabeleska: string;
+  PopisOrgEdinica_ID: number;
+  PopisOrgEdinicaNaziv: string;
+  PopisLokacija_ID: number;
+  PopisLokacijaNaziv: string;
+  PopisSprat_ID: number;
+  PopisSpratNaziv: string;
+  PopisSoba_ID: number;
+  PopisSobaNaziv: string;
+  PopisOdgovornoLice_ID: number;
+  PopisOdgovornoLice: string;
+  DatPromena: string;
+  Korisnik: string;
+  KorisnikNaziv: string;
+}
+
 export class V_Nepopisani {
   OS_ID: number;
   InventarenBroj: string;
@@ -146,4 +167,29 @@ export class V_Popis {
   Zabeleska: string;
   DatPromena: string;
   Korisnik: string;
+}
+
+export class V_Sredstva {
+  constructor(
+    public OS_ID: number,
+    public InventarenBroj: string,
+    public SeriskiBroj: string,
+    public Naziv: string,
+    public Opis: string,
+    public Godina: number,
+    public Mesec: number,
+    public OdgovornoLice_ID: number,
+    public OdgovornoLice: string,
+    public OrgEdinica_ID: number,
+    public OrgEdinicaNaziv: string,
+    public Lokacija_ID: number,
+    public LokacijaNaziv: string,
+    public Sprat_ID: number,
+    public SpratNaziv: string,
+    public Soba_ID: number,
+    public SobaNaziv: string,
+    public FakturaBroj: string,
+    public FakturaOpis: string,
+    public Cena: number
+  ) { }
 }

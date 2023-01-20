@@ -14,7 +14,15 @@
     (click)="loadPopisani()"
     [disabled]="isLoading$ | async"
   >
-    Само попишани {{ (popisani$ | async)?.length === 0 ? '' : (popisani$ | async)?.length }}
+    Попишани {{ (popisani$ | async)?.length === 0 ? '' : (popisani$ | async)?.length }}
+  </button>
+  <button
+    class="btn"
+    [ngClass]="tableToShow === 'PopisaniNovoNajdeni' ? 'btn-primary' : 'btn-secondary'"
+    (click)="loadPopisaniNovoNajdeni()"
+    [disabled]="isLoading$ | async"
+  >
+    Попишани Новонајдени {{ (popisaniNovoNajdeni$ | async)?.length === 0 ? '' : (popisaniNovoNajdeni$ | async)?.length }}
   </button>
   <button
     class="btn"
@@ -48,6 +56,17 @@
     <thead class="table-primary"></thead>
   </table>
   <a class="btn btn-primary" [href]="popisaniExportUrl" target="_blank" *ngIf="tableToShow === 'Popisani'"
+    >Export to Excel</a
+  >
+  <table
+    datatable
+    [dtOptions]="dtOptionsPopisaniNovoNajdeni"
+    class="table table-responsive table-bordered table-striped hover"
+    *ngIf="tableToShow === 'PopisaniNovoNajdeni'"
+  >
+    <thead class="table-primary"></thead>
+  </table>
+  <a class="btn btn-primary" [href]="popisaniNovoNajdeniExportUrl" target="_blank" *ngIf="tableToShow === 'PopisaniNovoNajdeni'"
     >Export to Excel</a
   >
   <table
