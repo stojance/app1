@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -55,12 +56,31 @@ export class PopisComponent implements OnInit, OnDestroy {
       pagingType: 'full_numbers',
       columns: [
         {
+          title: '#',
+          orderable: false,
+          searchable: false,
+          data: null,
+          render: (data, type, row, meta) => {
+            if (type === 'display') {
+              //return `<b style="color: blue">${meta.row + 1}</b>`;
+              return meta.row + 1;
+            }
+            return 0;
+          }
+        },
+        {
           title: 'ID',
           data: 'OS_ID',
         },
         {
           title: 'Инв.Број',
           data: 'InventarenBroj',
+          render: (data, type, row, meta) => {
+            if (type === 'display') {
+              return `<b>${data}</b>`;
+            }
+            return data;
+          }
         },
         {
           title: 'Назив',
@@ -70,7 +90,7 @@ export class PopisComponent implements OnInit, OnDestroy {
           title: 'Локација',
           data: null,
           render: (data, type) => {
-            return data.OrgEdinicaNaziv + ', ' + data.LokacijaNaziv+', '+ data.SpratNaziv+', '+ data.SobaNaziv+', '+ data.OdgovornoLice;
+            return data.OrgEdinicaNaziv + ', ' + data.LokacijaNaziv + ', ' + data.SpratNaziv + ', ' + data.SobaNaziv + ', ' + data.OdgovornoLice;
           }
         },
       ],
@@ -79,6 +99,20 @@ export class PopisComponent implements OnInit, OnDestroy {
     this.dtOptionsPopisani = {
       pagingType: 'full_numbers',
       columns: [
+        {
+          title: '#',
+          orderable: false,
+          searchable: false,
+          data: null,
+          render: (data, type, row, meta) => {
+            //console.log(meta);
+            if (type === 'display') {
+              //return `<b>${meta.row + 1}</b>`;
+              return meta.row  + 1;
+            }
+            return 0;
+          }
+        },
         {
           title: 'Уред бр.',
           data: 'UredBroj',
@@ -90,6 +124,12 @@ export class PopisComponent implements OnInit, OnDestroy {
         {
           title: 'Инв.Број',
           data: 'InventarenBroj',
+          render: (data, type, row, meta) => {
+            if (type === 'display') {
+              return `<b>${data}</b>`;
+            }
+            return data;
+          }
         },
         {
           title: 'Назив',
@@ -109,6 +149,20 @@ export class PopisComponent implements OnInit, OnDestroy {
     this.dtOptionsPopisaniNovoNajdeni = {
       pagingType: 'full_numbers',
       columns: [
+        {
+          title: '#',
+          orderable: false,
+          searchable: false,
+          data: null,
+          render: (data, type, row, meta) => {
+            //console.log(meta);
+            if (type === 'display') {
+              //return `<b style="color: blue">${meta.row + 1}</b>`;
+              return meta.row + 1;
+            }
+            return 0;
+          }
+        },
         {
           title: 'Уред бр.',
           data: 'UredBroj',
@@ -132,12 +186,30 @@ export class PopisComponent implements OnInit, OnDestroy {
       pagingType: 'full_numbers',
       columns: [
         {
+          title: '#',
+          orderable: false,
+          searchable: false,
+          data: null,
+          render: (data, type, row, meta) => {
+            if (type === 'display') {
+              return `<b style="color: darkgray">${meta.row + 1}</b>`;
+            }
+            return 0;
+          }
+        },
+        {
           title: 'ID',
           data: 'OS_ID',
         },
         {
           title: 'Инв.Број',
           data: 'InventarenBroj',
+          render: (data, type, row, meta) => {
+            if (type === 'display') {
+              return `<b>${data}</b>`;
+            }
+            return data;
+          }
         },
         {
           title: 'Назив',
@@ -147,7 +219,7 @@ export class PopisComponent implements OnInit, OnDestroy {
           title: 'Локација',
           data: null,
           render: (data, type) => {
-            return data.OrgEdinicaNaziv + ', ' + data.LokacijaNaziv+', '+ data.SpratNaziv+', '+ data.SobaNaziv+', '+ data.OdgovornoLice;
+            return data.OrgEdinicaNaziv + ', ' + data.LokacijaNaziv + ', ' + data.SpratNaziv + ', ' + data.SobaNaziv + ', ' + data.OdgovornoLice;
           }
         },
       ],
